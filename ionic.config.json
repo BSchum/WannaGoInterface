@@ -1,0 +1,10 @@
+{
+  "name": "WannaGoMD",
+  "app_id": "",
+    "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl":"http://api.ionic.dev:4500/api"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<ion-view class="backgroundBlue">
+    <ion-content class="loginPage" ng-controller="UserController">
+        <div class="row">
+            <div class="col col-80 col-offset-10 "><img class="logoLogin" src="/img/WannaGoV2Transparent.png" alt="WannaGo"></div>
+        </div>
+        <div class="list form">
+            <label class="item item-input item-floating-label">
+                <p class="inputfont">Username</p>
+                <input type="text" class="inputfont" ng-model="user.username">
+            </label>
+            <label class="item item-input item-floating-label">
+                <p class="inputfont">Password</p>
+                <input type="password" ng-model="user.password">
+            </label>
+            <br>
+            <button class="button button-stable connectButton " ng-click="connect()">
+                Connection
+            </button>
+        </div>
+       <div class="inputfont recover">
+            <a>Forgot password?</a><br><br>
+            <a>Forgot username?</a>
+       </div>
+    </ion-content>
+</ion-view>

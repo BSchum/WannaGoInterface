@@ -1,0 +1,22 @@
+<ion-view>  
+    <ion-content ng-controller="UserController">
+        <div class="contentProfile">
+            username : {{user.username}}
+            email : {{user.email}}
+            birthday:{{user.date}}
+        </div>
+    </ion-content>
+    <div class="tabs-striped tabs-color-positive navBar" style="position: static; margin-bottom: 15px;">
+        <div class="tabs">
+            <a class="tab-item" ui-sref="home" data-ink-color="#ef473a" data-ink-opacity=".35">
+                <i class="icon ion-home"></i>
+            </a>
+            <a class="tab-item active" ui-sref="profile" data-ink-color="#ef473a" data-ink-opacity=".35">
+                <i class="icon ion-star"></i> 
+            </a>
+            <a class="tab-item" data-ink-color="#ef473a" data-ink-opacity=".35">
+                <i class="icon ion-gear-a"></i> 
+            </a>
+        </div>
+    </div>
+</ion-view>
