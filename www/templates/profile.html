@@ -1,9 +1,17 @@
 <ion-view>  
-    <ion-content ng-controller="UserController">
-        <div class="contentProfile">
-            username : {{user.username}}
-            email : {{user.email}}
-            birthday:{{user.date}}
+    <ion-content>
+        <div ng-controller="UserController" ng-init="getUserInformation()">
+            <div class="profileHeader">
+                <img src="../img/daenerys.jpg" alt="" class="profilePics">
+            </div>
+            <div class="list card light-bg infoCard">
+                <h2 class="font username">{{username}} </h2>
+                <div class="item item-body">
+                    Email : {{email}} <br>  
+                    Birthday : {{date}}
+                </div>
+            </div>
+            <button class="button button-fab ink-dark button-calm icon ion-tshirt buttonModify"></button>
         </div>
     </ion-content>
     <div class="tabs-striped tabs-color-positive navBar" style="position: static; margin-bottom: 15px;">
