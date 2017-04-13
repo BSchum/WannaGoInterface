@@ -32,6 +32,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     .state('profile',{
         url:'/profile',
         templateUrl:'templates/profile.html'
+    })
+    .state('settings',{
+        url:'/settings',
+        templateUrl:'templates/settings.html'
+    })
+    .state('signin',{
+        url:'/signin',
+        templateUrl:'templates/signin.html'
     });
 
     // if none of the above states are matched, use this as the fallback

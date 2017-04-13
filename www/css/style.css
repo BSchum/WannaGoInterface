@@ -233,7 +233,7 @@ margin-top:10px;
     color:white !important;
 }
 .loginPage{
-    margin-top: 30%;
+    margin-top:20%;
 }
 .font{
     font-family: "RobotoDraft"
@@ -284,4 +284,26 @@ margin-top:10px;
     font-weight:bold;
     margin-top: 3%;
     margin-left: 45%;
+}
+.headerColor{
+    background-color: #03a9ff;
+}
+.signin{
+    margin-left: 14%;  
+    text-decoration: none;
+}
+.titleSign{
+    margin-left:40%;
+    margin-top: 10% !important;
+}
+.list .item-radio .item-content {
+  background-color: #03a9ff;
+  color: white;
+}
+.list .item-radio .radio-icon {
+  background-color: #03a9ff;
+  color: white;
+}
+.item-radio input:checked + .radio-content .item-content {
+    background-color: #03a9ff;
 }
