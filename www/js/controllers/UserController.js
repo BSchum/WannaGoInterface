@@ -1,4 +1,4 @@
-app.controller('UserController', function ($scope, $location, $state,$http,$ionicPopup,profileServices) {
+app.controller('UserController', function ($scope, $location, $state,$http,$ionicPopup,profileServices, $cordovaOauth, $localStorage) {
     console.log(localStorage.getItem('token'));
     console.log($state.current.name);
     if($state.current.name =="login") {
@@ -27,8 +27,16 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
     $scope.disconnect = function(){
         console.log("disconnect");
         localStorage.removeItem('token');
+        console.log(localStorage.getItem('token'));
         $state.go('login');
     }
+    $scope.getUserInformation = function(){
+        profileServices.get().success(function(data){
+            $scope.username = data.username;
+            $scope.date = data.date;
+            $scope.email = data.email;
+        });
+    };
     $scope.connect = function(user) {
             $http({
                 url:"api/public/user/authentification",
@@ -40,24 +48,18 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
             }).then(function(response){
                 if(response.data.success){
                     localStorage.setItem('token',response.data.token); 
-                    $state.go('settings');
+                    $scope.getUserInformation();
+                    $state.go('profile');
+                   
                 }
                 else{
                     console.log("Raté");
                     console.log(response.data);
                 }
-            });  
+            });
     };
 
-    $scope.getUserInformation = function(){
-        
-        profileServices.get().success(function(data){
-            $scope.username = data.username;
-            $scope.date = data.date;
-            $scope.email = data.email;
-            console.log(data.date);
-        });
-    };
+  
 
     $scope.connectWithFb = function(){
         $http({
@@ -67,6 +69,12 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
             window.open("/api/public/user/authentification-facebook","_system","")
         });
     };
+      $cordovaOauth.facebook("290350911389056", ["email"]).then(function(result) {
+        $localStorage.accessToken = result.access_token;
+        $location.path("/profile");
+      }, function(error) {
+        console.log(error);
+      });
 });
 
 app.factory('profileServices',function($http){
