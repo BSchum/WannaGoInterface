@@ -8,7 +8,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
     }
     $scope.signin = function(){
         $http({
-            url:"api/public/user/register/"+$scope.choice,
+            url:"https://iwannagoapi.herokuapp.com/api/public/user/register/"+$scope.choice,
             method:"PUT",
             data:{
                 username:$scope.user.username,
@@ -23,7 +23,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
     }
     $scope.changePassword = function(){
         $http({
-            url:"api/private/user/password",
+            url:"https://iwannagoapi.herokuapp.com/api/private/user/password",
             method:"POST",
             data:{
                 password:$scope.nwPassword
@@ -60,7 +60,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
     $scope.connect = function(user) {
             $scope.disconnect();
             $http({
-                url:"api/public/user/authentification",
+                url:"https://iwannagoapi.herokuapp.com/api/public/user/authentification",
                 method:"POST",
                 data:{
                     username:$scope.user.username,
@@ -69,7 +69,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
             })
             .then(function(response){
                 if(response.data.success){
-                    localStorage.setItem('token',response.data.token); 
+                    localStorage.setItem('token',response.data.token);
                     $scope.getUserInformation();
                     $state.go("home");
                 }
@@ -82,7 +82,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
 
     $scope.connectWithFb = function(){
         $http({
-            url:"api/public/user/authentification-facebook",
+            url:"https://iwannagoapi.herokuapp.com/api/public/user/authentification-facebook",
             method:"GET"
         }).then(function(response){
             window.open("/api/public/user/authentification-facebook","_system","")
@@ -102,7 +102,7 @@ app.factory('profileServices',function($http){
 
     function get(){
         return $http({
-            url:"api/prive/user/information",
+            url:"https://iwannagoapi.herokuapp.com/api/prive/user/information",
             method:"GET",
             headers:{
                 Authorization:localStorage.getItem('token')
