@@ -33,6 +33,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url:'/profile',
         templateUrl:'templates/profile.html'
     })
+    .state('pass',{
+        url:'/pass',
+        templateUrl:'templates/pass.html'
+    })
     .state('settings',{
         url:'/settings',
         templateUrl:'templates/settings.html'
@@ -41,6 +45,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url:'/signin',
         templateUrl:'templates/signin.html'
     });
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');

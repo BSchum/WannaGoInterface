@@ -3,7 +3,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
     console.log($state.current.name);
     if($state.current.name =="login") {
         if(localStorage.getItem('token')!= null){
-                $state.go('settings');
+                $state.go('home');
         }
     }
     $scope.signin = function(){
@@ -22,8 +22,27 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
         });
     }
     $scope.changePassword = function(){
+        $http({
+            url:"api/private/user/password",
+            method:"POST",
+            data:{
+                password:$scope.nwPassword
+            },
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        })
+        .then(function(data){
+            console.log(data);
 
+        });
     }
+    $scope.verifyBeforeChangePass = function(){// VERIFIER LE MOT DE PASSE AVANT DE CHANGER
+    };
+    $scope.goToPass= function(){
+            $state.go('pass');
+    };
+
     $scope.disconnect = function(){
         console.log("disconnect");
         localStorage.removeItem('token');
@@ -35,9 +54,11 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
             $scope.username = data.username;
             $scope.date = data.date;
             $scope.email = data.email;
+            console.log("profile { Username :"+$scope.username+", date :"+$scope.date+", email :"+$scope.email+"}");
         });
     };
     $scope.connect = function(user) {
+            $scope.disconnect();
             $http({
                 url:"api/public/user/authentification",
                 method:"POST",
@@ -45,12 +66,12 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
                     username:$scope.user.username,
                     password:$scope.user.password
                 }
-            }).then(function(response){
+            })
+            .then(function(response){
                 if(response.data.success){
                     localStorage.setItem('token',response.data.token); 
                     $scope.getUserInformation();
-                    $state.go('profile');
-                   
+                    $state.go("home");
                 }
                 else{
                     console.log("Raté");
@@ -58,8 +79,6 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
                 }
             });
     };
-
-  
 
     $scope.connectWithFb = function(){
         $http({
@@ -75,6 +94,8 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
       }, function(error) {
         console.log(error);
       });
+
+
 });
 
 app.factory('profileServices',function($http){

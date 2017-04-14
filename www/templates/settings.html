@@ -4,8 +4,8 @@
             <div class="h1 title font inputfont">Settings</div>
         </div>
         <ion-list class="list animate-blind">
-                <a class="item item-icon-left">
-                    <i class="icon ion-edit"></i> Change password
+                <a class="item item-icon-left" ng-click="goToPass()">
+                    <i class="icon ion-edit" ></i> Change password
                 </a>
                 <a class="item item-icon-left">
                     <i class="icon ion-document-text"></i> General terms
@@ -23,7 +23,7 @@
             <a class="tab-item" ui-sref="home" data-ink-color="#ef473a" data-ink-opacity=".35">
                 <i class="icon ion-home"></i>
             </a>
-            <a class="tab-item" ui-sref="profile" data-ink-color="#ef473a" data-ink-opacity=".35">
+            <a class="tab-item" ui-sref="profile" ng-click="getUserInformation()" data-ink-color="#ef473a" data-ink-opacity=".35">
                 <i class="icon ion-star"></i> 
             </a>
             <a class="tab-item active" ui-sref="settings" data-ink-color="#ef473a" data-ink-opacity=".35">
