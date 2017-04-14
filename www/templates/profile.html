@@ -1,13 +1,13 @@
-<ion-view>  
+<ion-view>
     <ion-content>
         <div ng-controller="UserController" ng-init="getUserInformation()">
             <div class="profileHeader">
-                <img src="../img/daenerys.jpg" alt="" class="profilePics">
+                <img src="./img/daenerys.jpg" alt="" class="profilePics">
             </div>
             <div class="list card light-bg infoCard">
                 <h2 class="font username">{{username}} </h2>
                 <div class="item item-body">
-                    Email : {{email}} <br>  
+                    Email : {{email}} <br>
                     Birthday : {{date}}
                 </div>
             </div>
@@ -20,10 +20,10 @@
                 <i class="icon ion-home"></i>
             </a>
             <a class="tab-item active" ui-sref="profile" ng-click="getUserInformation()" data-ink-color="#ef473a" data-ink-opacity=".35">
-                <i class="icon ion-star"></i> 
+                <i class="icon ion-star"></i>
             </a>
             <a class="tab-item" ui-sref="settings" data-ink-color="#ef473a" data-ink-opacity=".35">
-                <i class="icon ion-gear-a"></i> 
+                <i class="icon ion-gear-a"></i>
             </a>
         </div>
     </div>
