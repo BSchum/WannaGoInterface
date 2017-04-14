@@ -88,7 +88,7 @@ app.controller('UserController', function ($scope, $location, $state,$http,$ioni
       console.log(error);
     });
   };
-}
+});
 
 app.factory('profileServices',function($http){
 
